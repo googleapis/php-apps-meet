@@ -135,13 +135,18 @@ class SpacesServiceClientTest extends GeneratedTest
         // Mock response
         $expectedResponse = new GPBEmpty();
         $transport->addResponse($expectedResponse);
-        $request = new EndActiveConferenceRequest();
+        // Mock request
+        $formattedName = $gapicClient->spaceName('[SPACE]');
+        $request = (new EndActiveConferenceRequest())
+            ->setName($formattedName);
         $gapicClient->endActiveConference($request);
         $actualRequests = $transport->popReceivedCalls();
         $this->assertSame(1, count($actualRequests));
         $actualFuncCall = $actualRequests[0]->getFuncCall();
         $actualRequestObject = $actualRequests[0]->getRequestObject();
         $this->assertSame('/google.apps.meet.v2beta.SpacesService/EndActiveConference', $actualFuncCall);
+        $actualValue = $actualRequestObject->getName();
+        $this->assertProtobufEquals($formattedName, $actualValue);
         $this->assertTrue($transport->isExhausted());
     }
 
@@ -163,7 +168,10 @@ class SpacesServiceClientTest extends GeneratedTest
             'details' => [],
         ], JSON_PRETTY_PRINT);
         $transport->addResponse(null, $status);
-        $request = new EndActiveConferenceRequest();
+        // Mock request
+        $formattedName = $gapicClient->spaceName('[SPACE]');
+        $request = (new EndActiveConferenceRequest())
+            ->setName($formattedName);
         try {
             $gapicClient->endActiveConference($request);
             // If the $gapicClient method call did not throw, fail the test
@@ -194,7 +202,10 @@ class SpacesServiceClientTest extends GeneratedTest
         $expectedResponse->setMeetingUri($meetingUri);
         $expectedResponse->setMeetingCode($meetingCode);
         $transport->addResponse($expectedResponse);
-        $request = new GetSpaceRequest();
+        // Mock request
+        $formattedName = $gapicClient->spaceName('[SPACE]');
+        $request = (new GetSpaceRequest())
+            ->setName($formattedName);
         $response = $gapicClient->getSpace($request);
         $this->assertEquals($expectedResponse, $response);
         $actualRequests = $transport->popReceivedCalls();
@@ -202,6 +213,8 @@ class SpacesServiceClientTest extends GeneratedTest
         $actualFuncCall = $actualRequests[0]->getFuncCall();
         $actualRequestObject = $actualRequests[0]->getRequestObject();
         $this->assertSame('/google.apps.meet.v2beta.SpacesService/GetSpace', $actualFuncCall);
+        $actualValue = $actualRequestObject->getName();
+        $this->assertProtobufEquals($formattedName, $actualValue);
         $this->assertTrue($transport->isExhausted());
     }
 
@@ -223,7 +236,10 @@ class SpacesServiceClientTest extends GeneratedTest
             'details' => [],
         ], JSON_PRETTY_PRINT);
         $transport->addResponse(null, $status);
-        $request = new GetSpaceRequest();
+        // Mock request
+        $formattedName = $gapicClient->spaceName('[SPACE]');
+        $request = (new GetSpaceRequest())
+            ->setName($formattedName);
         try {
             $gapicClient->getSpace($request);
             // If the $gapicClient method call did not throw, fail the test
@@ -254,7 +270,10 @@ class SpacesServiceClientTest extends GeneratedTest
         $expectedResponse->setMeetingUri($meetingUri);
         $expectedResponse->setMeetingCode($meetingCode);
         $transport->addResponse($expectedResponse);
-        $request = new UpdateSpaceRequest();
+        // Mock request
+        $space = new Space();
+        $request = (new UpdateSpaceRequest())
+            ->setSpace($space);
         $response = $gapicClient->updateSpace($request);
         $this->assertEquals($expectedResponse, $response);
         $actualRequests = $transport->popReceivedCalls();
@@ -262,6 +281,8 @@ class SpacesServiceClientTest extends GeneratedTest
         $actualFuncCall = $actualRequests[0]->getFuncCall();
         $actualRequestObject = $actualRequests[0]->getRequestObject();
         $this->assertSame('/google.apps.meet.v2beta.SpacesService/UpdateSpace', $actualFuncCall);
+        $actualValue = $actualRequestObject->getSpace();
+        $this->assertProtobufEquals($space, $actualValue);
         $this->assertTrue($transport->isExhausted());
     }
 
@@ -283,7 +304,10 @@ class SpacesServiceClientTest extends GeneratedTest
             'details' => [],
         ], JSON_PRETTY_PRINT);
         $transport->addResponse(null, $status);
-        $request = new UpdateSpaceRequest();
+        // Mock request
+        $space = new Space();
+        $request = (new UpdateSpaceRequest())
+            ->setSpace($space);
         try {
             $gapicClient->updateSpace($request);
             // If the $gapicClient method call did not throw, fail the test
